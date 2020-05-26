@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="title"><h1>Todo List</h1></div>
+  <div class="box">
+    <div class="allLists">
+      <div id="heading">
+      <h2 >Existing List</h2>
+    </div>
+      <% listsarray.forEach(function(list){ %>
+      <form action="/list" method="POST">
+        <button class = "listButton" onclick="this.form.submit();" name="List" value="<%= list.name %>" ><%= list.name %></button>
+       <input type="hidden" id="List" value="<%= list.name %>"></input>
+      </form>
+      <% }) %>
+    </div>
+    <div class="selected">
+    <div id="heading">
+    <h2><%= listName %></h2>
+    </div>
+      <ul>
+        <% itemsarray.forEach(function(item){ %>
+          <form action="/delete" method="POST">
+          <div class="displayedList">
+            <input type="checkbox" name="checkbox" value="<%= item._id%>" onchange="this.form.submit()">
+            <p><%= item.name %></p>
+          </div>
+          <input type="hidden" name="Listname" value="<%= listName %>"></input>
+          </form>
+        <% }) %>
+      </ul>
+    <form class="item" action="/" autocomplete="off" method="POST">
+      <input type="text" name="newitem" placeholder="New Item">
+      <button class="addButton" type="submit" name="List" value="<%= listName %>">+</button>
+    </form>
+  </div>
+</div>
+    <div class="allLists">
+</body>
+</html>
