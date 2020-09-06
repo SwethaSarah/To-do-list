@@ -9,11 +9,11 @@ app.use(express.static("public"));
 
 app.set("view engine","ejs");
 
-app.listen(3000,function(req,res){
+app.listen(process.env.PORT,function(req,res){
     console.log("server listening");
 });
 
-mongoose.connect("mongodb://localhost:27017/todolistDB",{ useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.MONGOD_ADDON_URI,{ useUnifiedTopology: true, useNewUrlParser: true });
 
 const itemSchema={
     name: String
