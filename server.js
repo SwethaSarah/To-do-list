@@ -13,7 +13,7 @@ app.listen(process.env.PORT,function(req,res){
     console.log("server listening");
 });
 
-mongoose.connect(process.env.MONGOD_ADDON_URI,{ useUnifiedTopology: true, useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_ADDON_URI,{ useUnifiedTopology: true, useNewUrlParser: true });
 
 const itemSchema={
     name: String
